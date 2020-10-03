@@ -1,3 +1,7 @@
 #Directories
 Library/
 Temp/
+.vs/
+Assembly-CSharp.csproj
+LD47.sln
+obj/
