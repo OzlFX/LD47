@@ -6,6 +6,8 @@ public class PlayerHandler : MonoBehaviour
 
     private Rigidbody2D m_Rigidbody2D;
 
+    Vector2 m_Movement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +15,13 @@ public class PlayerHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Move();
+        m_Movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Verticle"));
     }
 
-    private void Move()
+    void FixedUpdate()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Verticle"));
-        m_Rigidbody2D.AddForce(movement * m_Speed * Time.deltaTime);
+        m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + m_Movement * m_Speed * Time.fixedDeltaTime);
     }
 }
